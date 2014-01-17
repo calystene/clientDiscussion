@@ -12,26 +12,14 @@ public class ReceiveUDP extends Thread {
 	
 	public ReceiveUDP () {
 		try {
-			/* On crée le socket multicast
-			 * et on rejoint le groupe multicast. Cette opération est nécessaire que pour l'écoute et non pas pour l'envoie
-			 */
 			socket = new MulticastSocket(port);
-			socket.joinGroup(InetAddress.getByName(group));
-			
-			/* A la fin de l'opération, penser à quitter le groupe et fermer le socket. 
-			 * remarque : on arrive jamais à cette opération vu qu'on ferme le programme dans le shell à l'aide de
-			 * Ctrl + C, néanmoins c'est une bonne habitude à prendre
-			 */
-			
-			
+			socket.joinGroup(InetAddress.getByName(group));		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/* L'opération d'écoute et d'affichage du paquet ne change pas de celle de l'exercice 1, on affiche juste l'adresse
-	 * du destinataire en plus
-	 */
+
 	public void listen () {
 		byte[] buffer = new byte[buff_size];
 		DatagramPacket p = new DatagramPacket(buffer, buffer.length);	
@@ -39,8 +27,7 @@ public class ReceiveUDP extends Thread {
 		while(true){
 			try {
 				socket.receive(p);
-				System.out.println("Nouveau message de " + p.getAddress().getHostName().toString() + " : ");
-				System.out.println(new String(p.getData()));
+				System.out.println("Message de " + p.getAddress().getHostName().toString() + " : " + new String(p.getData()));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -53,11 +40,4 @@ public class ReceiveUDP extends Thread {
 		socket.close();
 	}
 	
-	/*
-	@SuppressWarnings("unused")
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ReceiveUDP listener = new ReceiveUDP();
-	}
-	*/
 }

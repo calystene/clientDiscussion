@@ -10,6 +10,7 @@ public class ChatLan {
 		ReceiveUDP listener = new ReceiveUDP();
 		SendUDP sender = new SendUDP();
 		
+		System.out.println("Welcome on the multicast project !  (/exit pour quitter)");
 		listener.start();
 		sender.start();
 		
