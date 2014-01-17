@@ -1,0 +1,8 @@
+compile:
+	javac -classpath src/ src/exercice1/Listener.java
+	javac -classpath src/ src/exercice1/Sender.java
+
+exec_listener:
+	java -classpath bin/ exercice1.Listener
+
+exec_senderr: java -classpath bin/ exercice1.Sender
