@@ -16,7 +16,9 @@ La dexième exception à gérer est celle de la création du paquet... Elle peut
 
 
 Exercice 3
+
 Question 1 :
-Il faut 2 processus : un qui écoute le réseau, l'autre qui se tient prêt à l'envoie d'un message
+Il faut 2 processus : un qui écoute le réseau, l'autre qui se tient prêt à l'envoie d'un message. On fait donc hériter nos classes ReceiveUDP et SendUDP avec la classe
+Thread (par abus de langage on parle de processus, mais il faut savoir qu'en Java Thread n'est pas réellement un processus).
 
 Question 2 :
